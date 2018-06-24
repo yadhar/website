@@ -1,0 +1,98 @@
+<div class="single-widget search-widget">
+    <form class="example" action="#" style="margin:auto;max-width:300px">
+        <input type="text" placeholder="Search Posts" id="search-post-input">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+    <ul id="results-container"></ul>
+</div>
+
+<div class="single-widget protfolio-widget">
+    <img src="{{ site.baseurl }}/assets/img/user-avatar.png" alt="">
+    <a href="#"><h4>Amit Kumar</h4></a>
+    <p>
+        MCSE boot camps have its supporters and
+        its detractors. Some people do not understand why you should have to spend money
+        on boot camp when you can get.
+    </p>
+</div>
+
+<div class="single-widget category-widget">
+    <h4 class="title">Post Categories</h4>
+    <ul>
+        {% assign tags_list = site.categories %}
+        {% if tags_list.first[0] == null %}
+        {% for tag in tags_list %}
+        <li><a class="justify-content-between align-items-center d-flex" href="{{ site.baseurl }}/category/{{ tag | slugify }}">
+            <h6>{{ tag | capitalize }}</h6> <span>{{ site.tags[tag].size }}</span>
+        </a></li>
+        {% endfor %}
+        {% else %}
+        {% for tag in tags_list %}
+        <li><a class="justify-content-between align-items-center d-flex" href="{{ site.baseurl }}/category/{{ tag[0] |downcase }}">
+            <h6>{{ tag[0] | capitalize }}</h6> <span>{{ tag[1].size }}</span>
+        </a></li>
+        {% endfor %}
+        {% endif %}
+        {% assign tags_list = nil %}
+    </ul>
+</div>
+
+<div class="single-widget recent-posts-widget">
+    <h4 class="title">Recent Posts</h4>
+    <div class="blog-list ">
+        {% for r_post in site.posts limit:5 %}
+        <div class="single-recent-post d-flex flex-row">
+            <!--<div class="recent-thumb">
+                <img class="img-fluid" src="{{ site.baseurl }}/{{r_post.image}}" alt="{{r_post.title}}">
+            </div>-->
+            <div class="recent-details">
+                <a href="{{ r_post.url }}">
+                    <h4>
+                        {{r_post.title}}
+                    </h4>
+                </a>
+                <p>
+                    {{ r_post.date | date_to_string }}
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+<div class="single-widget category-widget">
+    <h4 class="title">Post Archive</h4>
+    <ul>
+
+        {% assign counter = 0 %}
+        {% for post in site.posts %}
+        {% assign thisyear = post.date | date: "%B %Y" %}
+        {% assign prevyear = post.previous.date | date: "%B %Y" %}
+        {% assign counter = counter | plus: 1 %}
+        {% if thisyear != prevyear %}
+        <li>
+            <a class="justify-content-between align-items-center d-flex" href="/archive/#{{ post.date | date:"%B %Y" }}">
+            <h6>{{ thisyear }}</h6> <span>{{ counter }}</span>
+            </a>
+        </li>
+        {% assign counter = 0 %}
+        {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+
+<!--<div class="single-widget tags-widget">
+    <h4 class="title">Tag Clouds</h4>
+    <ul>
+        <li><a href="#">Lifestyle</a></li>
+        <li><a href="#">Art</a></li>
+        <li><a href="#">Adventure</a></li>
+        <li><a href="#">Food</a></li>
+        <li><a href="#">Techlology</a></li>
+        <li><a href="#">Fashion</a></li>
+        <li><a href="#">Architecture</a></li>
+        <li><a href="#">Food</a></li>
+        <li><a href="#">Technology</a></li>
+    </ul>
+</div>-->

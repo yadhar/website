@@ -1,0 +1,33 @@
+<div class="single-post">
+    <img class="img-fluid" src="{{ site.baseurl }}/{{ post.image }}" alt="{{ post.title }}">
+    <ul class="tags">
+        {% for category in post.categories %}
+        <li><a href="#">{{category}}</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{{ post.url | absolute_url }}">
+        <h1>
+            {{ post.title }}
+        </h1>
+    </a>
+    <p>
+        {{post.excerpt | strip_html | truncatewords:60}}
+    </p>
+    <div class="bottom-meta">
+        <div class="user-details row align-items-center">
+            <div class="comment-wrap col-lg-6">
+                <p class="date"><em>{{ post.date | date_to_string }}</em></p>
+                <!--<ul>
+                    <li><a href="#"><span class="lnr lnr-heart"></span> 4 likes</a></li>
+                    <li><a href="#"><span class="lnr lnr-bubble"></span> 06 Comments</a></li>
+                </ul>-->
+            </div>
+            <div class="social-wrap col-lg-6">
+                <ul>
+                    {% include share.html %}
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+---
+layout: page
+title: Blog
+---
+<!-- Start blog-posts Area -->
+<section class="blog-posts-area section-gap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 post-list blog-post-list">
+
+                {% for post in paginator.posts %}
+
+                {% include single-post.html %}
+
+                {% endfor %}
+
+                <div class="bottompagination">
+                    <span class="navigation" role="navigation">
+    {% include pagination.html %}
+</span>
+                </div>
+
+            </div>
+            <div class="col-lg-4 sidebar">
+                {% include blog-sidebar.html %}
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End blog-posts Area -->

@@ -1,0 +1,104 @@
+---
+layout: default
+disqus: false
+archive: false
+---
+<!-- start banner Area -->
+<section class="banner-area relative" id="home">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">
+                    {{ page.title }}
+                </h1>
+                <p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="javascript:void(0);"> Blog</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
+<!-- Start blog-posts Area -->
+<section class="blog-posts-area section-gap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 post-list blog-post-list">
+                <div class="single-post">
+                    <img class="img-fluid" src="{{ site.baseurl }}/{{page.image}}" alt="{{ page.title }}">
+                    <ul class="tags">
+                        {% for category in page.categories %}
+                        <li><a href="#">{{category}}</a></li>
+                        {% endfor %}
+                    </ul>
+                    <a href="#">
+                        <h1>
+                            {{ page.title }}
+                        </h1>
+                    </a>
+                    <div class="content-wrap">
+                        {{page.content}}
+                    </div>
+                    <div class="bottom-meta">
+                        <div class="user-details row align-items-center">
+                            <div class="comment-wrap col-lg-6 col-sm-6">
+                                <!--<ul>
+                                    <li><a href="#"><span class="lnr lnr-heart"></span>	4 likes</a></li>
+                                    <li><a href="#"><span class="lnr lnr-bubble"></span> 06 Comments</a></li>
+                                </ul>-->
+                            </div>
+                            <div class="social-wrap col-lg-6">
+                                {% include share.html %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Start nav Area -->
+                    <section class="nav-area pt-50 pb-100">
+                        <div class="container">
+                            <div class="row justify-content-between">
+                                {% if page.previous.url %}
+                                <div class="col-sm-6 nav-left justify-content-start d-flex">
+                                    <div class="thumb">
+                                        <img src="{{ site.baseurl }}/assets/img/blog/prev.jpg" alt="">
+                                    </div>
+                                    <div class="post-details">
+                                        <p>Prev Post</p>
+                                        <h4 class="text-uppercase"><a href="{{page.previous.url | absolute_url}}">{{page.previous.title}}</a></h4>
+                                    </div>
+                                </div>
+                                {% endif %}
+
+                                {% if page.next.url %}
+                                <div class="col-sm-6 nav-right justify-content-end d-flex">
+                                    <div class="post-details">
+                                        <p>Next Post</p>
+                                        <h4 class="text-uppercase"><a href="{{page.next.url | absolute_url}}">{{page.next.title}}</a></h4>
+                                    </div>
+                                    <div class="thumb">
+                                        <img src="{{ site.baseurl }}/assets/img/blog/next.jpg" alt="">
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </section>
+                    <!-- End nav Area -->
+
+                    <!-- Start commentform Area -->
+                    <section class="commentform-area pt-80">
+                        <div class="container">
+                            {% include disqus.html %}
+                        </div>
+                    </section>
+                    <!-- End commentform Area -->
+
+
+                </div>
+            </div>
+            <div class="col-lg-4 sidebar">
+                {% include blog-sidebar.html %}
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End blog-posts Area -->
