@@ -2343,6 +2343,13 @@ body.mobile-nav-active #mobile-nav-toggle {
 .banner-area {
   background: url(../img/banner-bg.jpg) center;
   background-size: cover;
+  padding-top: 50px;
+}
+
+@media (max-width: 768px) {
+  .banner-area {
+    padding-top: 50px;
+  }
 }
 
 .banner-area .primary-btn {
